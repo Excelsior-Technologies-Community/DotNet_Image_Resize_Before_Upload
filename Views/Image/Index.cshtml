@@ -1,0 +1,1006 @@
+﻿@model List<DotNet_Image_Resize_Before_Upload.Models.ImageUpload>
+
+@{
+    ViewData["Title"] = "Uploaded Images";
+}
+
+<!-- ========================= -->
+<!-- CSS -->
+<!-- ========================= -->
+
+<style>
+
+    .image-page {
+        min-height: calc(100vh - 72px);
+        background: #f5f7fb;
+    }
+
+
+    /* PAGE HEADER */
+
+    .page-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .page-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 6px;
+        background: #eaf2ff;
+        color: #0d6efd;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .6px;
+        margin-bottom: 8px;
+    }
+
+    .page-title {
+        margin: 0;
+        color: #172033;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .page-subtitle {
+        color: #7a8494;
+        margin-top: 5px;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+
+
+    /* UPLOAD BUTTON */
+
+    .upload-main-btn {
+        background: #0d6efd;
+        color: #ffffff;
+        border: none;
+        border-radius: 9px;
+        padding: 11px 20px;
+        font-weight: 600;
+        box-shadow: 0 5px 15px rgba(13, 110, 253, .15);
+        transition: all .2s ease;
+    }
+
+        .upload-main-btn:hover {
+            background: #0b5ed7;
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+    .plus-icon {
+        font-size: 18px;
+        margin-right: 5px;
+    }
+
+
+    /* ALERT */
+
+    .custom-success-alert,
+    .custom-error-alert {
+        border: none;
+        border-radius: 10px;
+        padding: 14px 18px;
+        margin-bottom: 25px;
+    }
+
+    .custom-success-alert {
+        background: #eaf8f0;
+        color: #176b3a;
+    }
+
+    .custom-error-alert {
+        background: #fff0f0;
+        color: #a42626;
+    }
+
+    .alert-icon {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-right: 12px;
+        font-weight: 700;
+    }
+
+    .success-icon {
+        background: #d4f2df;
+        color: #198754;
+    }
+
+    .error-icon {
+        background: #ffdada;
+        color: #dc3545;
+    }
+
+
+    /* EMPTY STATE */
+
+    .empty-state {
+        background: #ffffff;
+        border: 1px solid #e9edf3;
+        border-radius: 15px;
+        padding: 70px 20px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, .04);
+    }
+
+    .empty-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #eaf2ff;
+        border-radius: 50%;
+        font-size: 30px;
+    }
+
+    .empty-state h4 {
+        color: #172033;
+        font-weight: 700;
+    }
+
+    .empty-state p {
+        color: #7a8494;
+        margin-bottom: 20px;
+    }
+
+
+    /* IMAGE CARD */
+
+    .image-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #e9edf3;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, .04);
+        transition: all .25s ease;
+    }
+
+        .image-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .09);
+        }
+
+
+    /* IMAGE */
+
+    .card-image-wrapper {
+        height: 245px;
+        background: #f7f8fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-bottom: 1px solid #edf0f4;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 12px;
+        transition: transform .3s ease;
+    }
+
+    .image-card:hover .card-image {
+        transform: scale(1.02);
+    }
+
+
+    /* CARD BODY */
+
+    .card-body-custom {
+        padding: 20px;
+    }
+
+
+    /* IMAGE INFORMATION */
+
+    .image-info {
+        width: 100%;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 11px;
+        font-size: 13px;
+    }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-row span {
+            color: #7a8494;
+        }
+
+        .info-row strong {
+            color: #202938;
+            font-size: 13px;
+        }
+
+    .resize-value {
+        color: #0d6efd !important;
+    }
+
+
+    /* CARD BUTTONS */
+
+    .card-actions {
+        display: flex;
+        gap: 9px;
+        margin-top: 18px;
+    }
+
+    .view-btn {
+        flex: 1;
+        background: #eaf2ff;
+        color: #0d6efd;
+        border: 1px solid #dce9ff;
+        border-radius: 8px;
+        font-weight: 600;
+        padding: 9px;
+    }
+
+        .view-btn:hover {
+            background: #0d6efd;
+            color: #ffffff;
+            border-color: #0d6efd;
+        }
+
+    .delete-form {
+        flex: 1;
+    }
+
+    .delete-btn {
+        width: 100%;
+        background: #fff0f0;
+        color: #dc3545;
+        border: 1px solid #ffdada;
+        border-radius: 8px;
+        font-weight: 600;
+        padding: 9px;
+    }
+
+        .delete-btn:hover {
+            background: #dc3545;
+            color: #ffffff;
+            border-color: #dc3545;
+        }
+
+
+    /* MODAL */
+
+    .image-modal-content {
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, .18);
+    }
+
+    .image-modal-header {
+        padding: 22px 26px;
+        background: #ffffff;
+        border-bottom: 1px solid #edf0f4;
+    }
+
+    .preview-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 6px;
+        background: #eaf2ff;
+        color: #0d6efd;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .6px;
+    }
+
+    .modal-file-name {
+        color: #172033;
+        font-size: 19px;
+        font-weight: 700;
+    }
+
+
+    /* LARGE PREVIEW */
+
+    .large-preview-box {
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f7f8fa;
+        border: 1px solid #e9edf2;
+        border-radius: 14px;
+        padding: 25px;
+        overflow: hidden;
+    }
+
+    .large-preview-image {
+        max-width: 100%;
+        max-height: 480px;
+        object-fit: contain;
+        border-radius: 10px;
+        transition: transform .3s ease;
+    }
+
+        .large-preview-image:hover {
+            transform: scale(1.02);
+        }
+
+
+    /* DETAILS */
+
+    .details-section {
+        padding: 5px;
+    }
+
+    .details-title {
+        color: #172033;
+        font-weight: 700;
+        margin-bottom: 3px;
+    }
+
+    .details-subtitle {
+        color: #8a94a4;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding: 12px;
+        margin-bottom: 9px;
+        background: #f8f9fb;
+        border: 1px solid #edf0f3;
+        border-radius: 10px;
+    }
+
+    .info-icon {
+        width: 38px;
+        height: 38px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #eaf2ff;
+        border-radius: 8px;
+        font-size: 17px;
+    }
+
+    .info-content {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+        .info-content small {
+            color: #7a8494;
+            font-size: 11px;
+        }
+
+        .info-content strong {
+            color: #202938;
+            font-size: 13px;
+        }
+
+
+    /* RESIZE SUMMARY */
+
+    .resize-summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 17px;
+        padding: 16px;
+        background: #f0f6ff;
+        border: 1px solid #dce9ff;
+        border-radius: 12px;
+    }
+
+        .resize-summary div:not(.summary-arrow) {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resize-summary small {
+            color: #7a8494;
+            font-size: 10px;
+            margin-bottom: 3px;
+        }
+
+        .resize-summary strong {
+            color: #0d6efd;
+            font-size: 13px;
+        }
+
+    .summary-arrow {
+        color: #0d6efd;
+        font-size: 21px;
+        font-weight: 600;
+    }
+
+
+    /* MODAL FOOTER */
+
+    .image-modal-footer {
+        padding: 15px 25px;
+        background: #fafbfc;
+        border-top: 1px solid #edf0f4;
+    }
+
+    .close-modal-btn {
+        background: #ffffff;
+        border: 1px solid #dfe3e8;
+        color: #4f5968;
+        border-radius: 8px;
+        padding: 8px 22px;
+        font-weight: 600;
+    }
+
+        .close-modal-btn:hover {
+            background: #f1f3f5;
+            color: #202938;
+        }
+
+
+    /* RESPONSIVE */
+
+    @@media (max-width: 768px) {
+        .page-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .upload-main-btn {
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 25px;
+        }
+
+        .large-preview-box {
+            min-height: 350px;
+        }
+
+        .large-preview-image {
+            max-height: 330px;
+        }
+    }
+
+
+    @@media (max-width: 576px) {
+        .image-page .container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .card-image-wrapper {
+            height: 220px;
+        }
+
+        .large-preview-box {
+            min-height: 280px;
+            padding: 15px;
+        }
+
+        .large-preview-image {
+            max-height: 260px;
+        }
+
+        .modal-file-name {
+            font-size: 16px;
+        }
+
+        .resize-summary {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .summary-arrow {
+            transform: rotate(90deg);
+        }
+    }
+</style>
+
+<div class="image-page">
+
+    <div class="container py-5">
+
+        <!-- ========================= -->
+        <!-- PAGE HEADER -->
+        <!-- ========================= -->
+
+        <div class="page-header mb-4">
+
+            <div>
+                <span class="page-badge">
+                    IMAGE MANAGEMENT
+                </span>
+
+                <h2 class="page-title">
+                    Uploaded Images
+                </h2>
+
+                <p class="page-subtitle">
+                    Manage and preview your resized images
+                </p>
+            </div>
+
+            <a asp-controller="Image"
+               asp-action="Upload"
+               class="btn upload-main-btn">
+
+                <span class="plus-icon">+</span>
+                Upload Image
+
+            </a>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- SUCCESS MESSAGE -->
+        <!-- ========================= -->
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert custom-success-alert alert-dismissible fade show">
+
+                <div class="d-flex align-items-center">
+
+                    <div class="alert-icon success-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>Success</strong>
+                        <div>@TempData["Success"]</div>
+                    </div>
+
+                </div>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert">
+                </button>
+
+            </div>
+        }
+
+
+        <!-- ========================= -->
+        <!-- ERROR MESSAGE -->
+        <!-- ========================= -->
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert custom-error-alert alert-dismissible fade show">
+
+                <div class="d-flex align-items-center">
+
+                    <div class="alert-icon error-icon">
+                        !
+                    </div>
+
+                    <div>
+                        <strong>Error</strong>
+                        <div>@TempData["Error"]</div>
+                    </div>
+
+                </div>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert">
+                </button>
+
+            </div>
+        }
+
+
+        <!-- ========================= -->
+        <!-- EMPTY STATE -->
+        <!-- ========================= -->
+        @if (Model.Count == 0)
+        {
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🖼
+                </div>
+
+                <h4>
+                    No images uploaded yet
+                </h4>
+
+                <p>
+                    Upload your first image to get started.
+                </p>
+
+                <a asp-controller="Image"
+                   asp-action="Upload"
+                   class="btn btn-primary">
+                    Upload Image
+                </a>
+
+            </div>
+        }
+        else
+        {
+            <!-- ========================= -->
+            <!-- IMAGE GRID -->
+            <!-- ========================= -->
+
+            <div class="row g-4">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+
+                        <div class="image-card">
+
+                            <!-- IMAGE -->
+                            <div class="card-image-wrapper">
+
+                                <img src="@item.ImagePath"
+                                     alt="Uploaded Image"
+                                     class="card-image" />
+
+                            </div>
+
+
+                            <!-- CARD BODY -->
+                            <div class="card-body-custom">
+
+                                <!-- IMAGE INFORMATION -->
+
+                                <div class="image-info">
+
+                                    <div class="info-row">
+
+                                        <span>
+                                            Original Size
+                                        </span>
+
+                                        <strong>
+                                            @item.OriginalWidth × @item.OriginalHeight
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="info-row">
+
+                                        <span>
+                                            Resized Size
+                                        </span>
+
+                                        <strong class="resize-value">
+                                            @item.ResizedWidth × @item.ResizedHeight
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div class="info-row">
+
+                                        <span>
+                                            File Size
+                                        </span>
+
+                                        <strong>
+                                            @item.FileSize bytes
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- BUTTONS -->
+
+                                <div class="card-actions">
+
+                                    <!-- VIEW -->
+
+                                    <button type="button"
+                                            class="btn view-btn"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#imageModal_@item.ImageId">
+
+                                        <span>👁</span>
+                                        View
+
+                                    </button>
+
+
+                                    <!-- DELETE -->
+
+                                    <form asp-controller="Image"
+                                          asp-action="Delete"
+                                          method="post"
+                                          class="delete-form"
+                                          onsubmit="return confirm('Are you sure you want to delete this image?');">
+
+                                        @Html.AntiForgeryToken()
+
+                                        <input type="hidden"
+                                               name="id"
+                                               value="@item.ImageId" />
+
+                                        <button type="submit"
+                                                class="btn delete-btn">
+
+                                            <span>🗑</span>
+                                            Delete
+
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ========================= -->
+                    <!-- VIEW IMAGE MODAL -->
+                    <!-- ========================= -->
+
+                    <div class="modal fade"
+                         id="imageModal_@item.ImageId"
+                         tabindex="-1"
+                         aria-hidden="true">
+
+                        <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                            <div class="modal-content image-modal-content">
+
+
+                                <!-- MODAL HEADER -->
+
+                                <div class="modal-header image-modal-header">
+
+                                    <div>
+
+                                        <span class="preview-badge">
+                                            IMAGE PREVIEW
+                                        </span>
+
+                                        <h4 class="modal-title modal-file-name mt-2">
+                                            Image Details
+                                        </h4>
+
+                                    </div>
+
+
+                                    <button type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                    </button>
+
+                                </div>
+
+
+                                <!-- MODAL BODY -->
+
+                                <div class="modal-body p-4">
+
+                                    <div class="row g-4 align-items-center">
+
+
+                                        <!-- LARGE IMAGE -->
+
+                                        <div class="col-lg-7">
+
+                                            <div class="large-preview-box">
+
+                                                <img src="@item.ImagePath"
+                                                     alt="Uploaded Image"
+                                                     class="large-preview-image" />
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <!-- DETAILS -->
+
+                                        <div class="col-lg-5">
+
+                                            <div class="details-section">
+
+                                                <h5 class="details-title">
+                                                    Image Details
+                                                </h5>
+
+                                                <p class="details-subtitle">
+                                                    Information about the uploaded image
+                                                </p>
+
+
+                                                <!-- ORIGINAL DIMENSIONS -->
+
+                                                <div class="info-item">
+
+                                                    <div class="info-icon">
+                                                        ↔
+                                                    </div>
+
+                                                    <div class="info-content">
+
+                                                        <small>
+                                                            Original Dimensions
+                                                        </small>
+
+                                                        <strong>
+                                                            @item.OriginalWidth × @item.OriginalHeight px
+                                                        </strong>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <!-- RESIZED DIMENSIONS -->
+
+                                                <div class="info-item">
+
+                                                    <div class="info-icon">
+                                                        ⛶
+                                                    </div>
+
+                                                    <div class="info-content">
+
+                                                        <small>
+                                                            Resized Dimensions
+                                                        </small>
+
+                                                        <strong>
+                                                            @item.ResizedWidth × @item.ResizedHeight px
+                                                        </strong>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <!-- FILE SIZE -->
+
+                                                <div class="info-item">
+
+                                                    <div class="info-icon">
+                                                        💾
+                                                    </div>
+
+                                                    <div class="info-content">
+
+                                                        <small>
+                                                            File Size
+                                                        </small>
+
+                                                        <strong>
+                                                            @item.FileSize bytes
+                                                        </strong>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <!-- UPLOAD DATE -->
+
+                                                <div class="info-item">
+
+                                                    <div class="info-icon">
+                                                        📅
+                                                    </div>
+
+                                                    <div class="info-content">
+
+                                                        <small>
+                                                            Uploaded Date
+                                                        </small>
+
+                                                        <strong>
+                                                            @item.CreatedDate.ToString("dd-MM-yyyy hh:mm tt")
+                                                        </strong>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <!-- RESIZE SUMMARY -->
+
+                                                <div class="resize-summary">
+
+                                                    <div>
+
+                                                        <small>
+                                                            Original
+                                                        </small>
+
+                                                        <strong>
+                                                            @item.OriginalWidth × @item.OriginalHeight
+                                                        </strong>
+
+                                                    </div>
+
+
+                                                    <div class="summary-arrow">
+                                                        →
+                                                    </div>
+
+
+                                                    <div>
+
+                                                        <small>
+                                                            Resized
+                                                        </small>
+
+                                                        <strong>
+                                                            @item.ResizedWidth × @item.ResizedHeight
+                                                        </strong>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- MODAL FOOTER -->
+
+                                <div class="modal-footer image-modal-footer">
+
+                                    <button type="button"
+                                            class="btn close-modal-btn"
+                                            data-bs-dismiss="modal">
+
+                                        Close
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+        }
+
+    </div>
+
+</div>
+

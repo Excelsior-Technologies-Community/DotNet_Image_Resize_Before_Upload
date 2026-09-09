@@ -1,7 +1,48 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_image_resize_before_upload\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_image_resize_before_upload\\views\\image\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|solutionrelative:views\\image\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_image_resize_before_upload\\views\\image\\upload.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|solutionrelative:views\\image\\upload.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_image_resize_before_upload\\services\\imageresizeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|solutionrelative:services\\imageresizeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_image_resize_before_upload\\controllers\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|solutionrelative:controllers\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_image_resize_before_upload\\services\\iimageresizeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|solutionrelative:services\\iimageresizeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_image_resize_before_upload\\models\\imageuploadviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|solutionrelative:models\\imageuploadviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_image_resize_before_upload\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_image_resize_before_upload\\models\\imageupload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|solutionrelative:models\\imageupload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_image_resize_before_upload\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BC975E6F-039A-4C6D-AA2A-630C4CE92855}|DotNet_Image_Resize_Before_Upload.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +50,141 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQCAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-09T12:20:20.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Views\\Image\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Image\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Views\\Image\\Index.cshtml",
+              "RelativeToolTip": "Views\\Image\\Index.cshtml",
+              "ViewState": "AgIAAPEBAAAAAAAAAAAIwAgCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-09T11:53:12.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ImageController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Controllers\\ImageController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ImageController.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Controllers\\ImageController.cs",
+              "RelativeToolTip": "Controllers\\ImageController.cs",
+              "ViewState": "AgIAAB4BAAAAAAAAAAAgwCQBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-09T11:51:30.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-09T11:51:09.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ImageResizeService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Services\\ImageResizeService.cs",
+              "RelativeDocumentMoniker": "Services\\ImageResizeService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Services\\ImageResizeService.cs",
+              "RelativeToolTip": "Services\\ImageResizeService.cs",
+              "ViewState": "AgIAABcBAAAAAAAAAAAowDABAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-09T11:50:50.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IImageResizeService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Services\\IImageResizeService.cs",
+              "RelativeDocumentMoniker": "Services\\IImageResizeService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Services\\IImageResizeService.cs",
+              "RelativeToolTip": "Services\\IImageResizeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-09T11:49:50.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Upload.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Views\\Image\\Upload.cshtml",
+              "RelativeDocumentMoniker": "Views\\Image\\Upload.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Views\\Image\\Upload.cshtml",
+              "RelativeToolTip": "Views\\Image\\Upload.cshtml",
+              "ViewState": "AgIAAJUBAAAAMjMzM7MTwO4BAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-09T11:52:37.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ImageUploadViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Models\\ImageUploadViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ImageUploadViewModel.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Models\\ImageUploadViewModel.cs",
+              "RelativeToolTip": "Models\\ImageUploadViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-09T11:49:08.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ImageUpload.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Models\\ImageUpload.cs",
+              "RelativeDocumentMoniker": "Models\\ImageUpload.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\Models\\ImageUpload.cs",
+              "RelativeToolTip": "Models\\ImageUpload.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-09T11:48:35.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Image_Resize_Before_Upload\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-09-09T11:45:37.1Z",
+              "EditorCaption": ""
             }
           ]
         }

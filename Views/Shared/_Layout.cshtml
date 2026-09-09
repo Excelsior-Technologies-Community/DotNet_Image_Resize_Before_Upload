@@ -1,50 +1,613 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DotNet_Image_Resize_Before_Upload</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/DotNet_Image_Resize_Before_Upload.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DotNet_Image_Resize_Before_Upload</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        @ViewData["Title"] - ImageResizer
+    </title>
+
+    <script type="importmap"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <!-- Project CSS -->
+    <link rel="stylesheet"
+          href="~/DotNet_Image_Resize_Before_Upload.styles.css"
+          asp-append-version="true" />
+
+
+    <!-- ============================== -->
+    <!-- CUSTOM LAYOUT CSS -->
+    <!-- ============================== -->
+
+    <style>
+
+        /* ============================== */
+        /* GLOBAL */
+        /* ============================== */
+
+        html {
+            font-size: 14px;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #f5f7fb;
+            color: #172033;
+            display: flex;
+            flex-direction: column;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        main {
+            flex: 1;
+        }
+
+
+        /* ============================== */
+        /* NAVBAR */
+        /* ============================== */
+
+        .custom-navbar {
+            min-height: 72px;
+            background: #ffffff;
+            border-bottom: 1px solid #e7ebf1;
+            box-shadow: 0 2px 15px rgba(15, 23, 42, 0.04);
+            position: relative;
+            z-index: 1000;
+        }
+
+
+            /* ============================== */
+            /* NAVBAR CONTAINER */
+            /* ============================== */
+
+            .custom-navbar .container {
+                min-height: 72px;
+            }
+
+
+        /* ============================== */
+        /* BRAND */
+        /* ============================== */
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            color: #172033 !important;
+            text-decoration: none;
+            font-size: 21px;
+            font-weight: 750;
+            letter-spacing: -0.3px;
+            transition: all 0.2s ease;
+        }
+
+            .brand-logo:hover {
+                color: #172033 !important;
+            }
+
+
+        /* LOGO ICON */
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 11px;
+            background: linear-gradient( 135deg, #0d6efd, #4f8dfd );
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 14px rgba(13, 110, 253, 0.20);
+        }
+
+
+        /* BRAND TEXT */
+
+        .brand-highlight {
+            color: #0d6efd;
+        }
+
+
+        /* ============================== */
+        /* NAVIGATION */
+        /* ============================== */
+
+        .custom-navbar .navbar-nav {
+            gap: 5px;
+        }
+
+
+        .custom-navbar .nav-link {
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: #596579 !important;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 14px !important;
+            border-radius: 9px;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+
+            .custom-navbar .nav-link:hover {
+                color: #0d6efd !important;
+                background: #f1f6ff;
+            }
+
+
+            /* ACTIVE LINK */
+
+            .custom-navbar .nav-link.active {
+                color: #0d6efd !important;
+                background: #eef5ff;
+            }
+
+
+        /* ============================== */
+        /* NAV ICON */
+        /* ============================== */
+
+        .nav-icon {
+            width: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 6px;
+            font-size: 17px;
+        }
+
+
+        /* ============================== */
+        /* UPLOAD NAV BUTTON */
+        /* ============================== */
+
+        .upload-nav-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            min-height: 40px;
+            padding: 9px 17px !important;
+            border: 1px solid #0d6efd !important;
+            border-radius: 9px;
+            background: #0d6efd;
+            color: #ffffff !important;
+            font-size: 13px;
+            font-weight: 650;
+            text-decoration: none;
+            box-shadow: 0 5px 14px rgba(13, 110, 253, 0.14);
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+
+            .upload-nav-btn:hover {
+                background: #0b5ed7;
+                color: #ffffff !important;
+                transform: translateY(-1px);
+                box-shadow: 0 7px 18px rgba(13, 110, 253, 0.20);
+            }
+
+
+            .upload-nav-btn .upload-plus {
+                width: 19px;
+                height: 19px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                background: rgba(255, 255, 255, 0.18);
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 1;
+            }
+
+
+        /* ============================== */
+        /* MOBILE TOGGLER */
+        /* ============================== */
+
+        .navbar-toggler {
+            width: 42px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border: 1px solid #dfe4eb;
+            border-radius: 9px;
+            background: #ffffff;
+        }
+
+
+            .navbar-toggler:hover {
+                background: #f7f9fc;
+            }
+
+
+            .navbar-toggler:focus {
+                box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.10);
+            }
+
+
+        .navbar-toggler-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+
+        /* ============================== */
+        /* FOOTER */
+        /* ============================== */
+
+        .custom-footer {
+            margin-top: 50px;
+            background: #172033;
+            color: #aeb8c8;
+            padding: 30px 0;
+            border-top: 1px solid #202b40;
+        }
+
+
+        .footer-brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+
+        .footer-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: #0d6efd;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+
+        .footer-brand {
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+        }
+
+
+        .footer-description {
+            margin: 0;
+            color: #8f9aae;
+            font-size: 12px;
+        }
+
+
+        .footer-copy {
+            color: #8f9aae;
+            font-size: 12px;
+        }
+
+
+        /* ============================== */
+        /* FOOTER DIVIDER */
+        /* ============================== */
+
+        .footer-divider {
+            width: 1px;
+            height: 18px;
+            display: inline-block;
+            margin: 0 10px;
+            background: #354158;
+            vertical-align: middle;
+        }
+
+
+        /* ============================== */
+        /* MOBILE NAVBAR */
+        /* ============================== */
+
+        @@media (max-width: 991.98px) {
+
+            .custom-navbar {
+                min-height: 68px;
+            }
+
+
+                .custom-navbar .container {
+                    min-height: 68px;
+                }
+
+
+                .custom-navbar .navbar-collapse {
+                    margin-top: 10px;
+                    padding: 12px 0 16px;
+                    border-top: 1px solid #edf0f4;
+                }
+
+
+                .custom-navbar .navbar-nav {
+                    gap: 3px;
+                    align-items: stretch !important;
+                }
+
+
+                .custom-navbar .nav-link {
+                    width: 100%;
+                    padding: 11px 13px !important;
+                    margin-bottom: 3px;
+                }
+
+
+                .custom-navbar .nav-item {
+                    width: 100%;
+                }
+
+
+            .upload-nav-btn {
+                width: 100%;
+                margin-top: 7px;
+                padding: 11px 16px !important;
+            }
+
+
+            .custom-footer {
+                text-align: center;
+            }
+
+
+            .footer-copy-wrapper {
+                text-align: center !important;
+            }
+        }
+
+
+        /* ============================== */
+        /* SMALL SCREEN */
+        /* ============================== */
+
+        @@media (max-width: 575.98px) {
+
+            .brand-logo {
+                font-size: 18px;
+            }
+
+
+            .brand-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 9px;
+                font-size: 12px;
+            }
+
+
+            .custom-footer {
+                padding: 25px 0;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================= -->
+    <!-- NAVBAR -->
+    <!-- ================================= -->
+
+    <header>
+
+        <nav class="navbar navbar-expand-lg custom-navbar">
+
+            <div class="container">
+
+
+                <!-- ========================= -->
+                <!-- BRAND -->
+                <!-- ========================= -->
+
+                <a class="navbar-brand brand-logo"
+                   asp-controller="Image"
+                   asp-action="Index">
+
+                    <span class="brand-icon">
+                        IR
+                    </span>
+
+                    <span>
+                        Image<span class="brand-highlight">Resizer</span>
+                    </span>
+
+                </a>
+
+
+                <!-- ========================= -->
+                <!-- MOBILE TOGGLER -->
+                <!-- ========================= -->
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+
+                <!-- ========================= -->
+                <!-- NAVIGATION -->
+                <!-- ========================= -->
+
+                <div class="collapse navbar-collapse"
+                     id="mainNavbar">
+
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+
+
+                        <!-- ========================= -->
+                        <!-- IMAGES -->
+                        <!-- ========================= -->
+
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                               asp-controller="Image"
+                               asp-action="Index">
+
+                                <span class="nav-icon">
+                                    ▦
+                                </span>
+
+                                Images
+
+                            </a>
+
+                        </li>
+
+
+                        <!-- ========================= -->
+                        <!-- UPLOAD -->
+                        <!-- ========================= -->
+
+                        <li class="nav-item ms-lg-2">
+
+                            <a class="upload-nav-btn"
+                               asp-controller="Image"
+                               asp-action="Upload">
+
+                                <span class="upload-plus">
+                                    +
+                                </span>
+
+                                Upload Image
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ================================= -->
+
+    <main role="main">
+
+        @RenderBody()
+
+    </main>
+
+
+    <!-- ================================= -->
+    <!-- FOOTER -->
+    <!-- ================================= -->
+
+    <footer class="custom-footer">
+
         <div class="container">
-            &copy; 2026 - DotNet_Image_Resize_Before_Upload - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+            <div class="row align-items-center">
+
+
+                <!-- LEFT -->
+
+                <div class="col-md-7">
+
+                    <div class="footer-brand-wrapper">
+
+                        <span class="footer-icon">
+                            IR
+                        </span>
+
+                        <span class="footer-brand">
+                            ImageResizer
+                        </span>
+
+                    </div>
+
+                    <p class="footer-description">
+                        Resize and optimize your images easily.
+                    </p>
+
+                </div>
+
+
+                <!-- RIGHT -->
+
+                <div class="col-md-5 text-md-end mt-3 mt-md-0 footer-copy-wrapper">
+
+                    <span class="footer-copy">
+                        © 2026 ImageResizer
+                    </span>
+
+                    <span class="footer-divider"></span>
+
+                    <span class="footer-copy">
+                        All rights reserved.
+                    </span>
+
+                </div>
+
+            </div>
+
         </div>
+
     </footer>
+
+
+    <!-- ================================= -->
+    <!-- SCRIPTS -->
+    <!-- ================================= -->
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/js/site.js"
+            asp-append-version="true">
+    </script>
+
+
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
+
 </html>

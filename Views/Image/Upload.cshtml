@@ -1,0 +1,495 @@
+﻿
+@model DotNet_Image_Resize_Before_Upload.Models.ImageUploadViewModel
+
+@{
+    ViewData["Title"] = "Resize Image Before Upload";
+}
+
+<style>
+
+    .upload-page {
+        min-height: 100vh;
+        background: #f5f7fb;
+    }
+
+    .upload-card {
+        border-radius: 18px;
+        box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    }
+
+    .section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .step-number {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #0d6efd;
+        color: #ffffff;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .upload-area {
+        border: 2px dashed #cbd5e1;
+        border-radius: 14px;
+        background: #f8fafc;
+        transition: 0.25s;
+    }
+
+        .upload-area:hover {
+            border-color: #0d6efd;
+            background: #f0f6ff;
+        }
+
+    .upload-label {
+        min-height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .upload-icon {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background: #e7f0ff;
+        color: #0d6efd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 14px;
+    }
+
+    .browse-btn {
+        padding: 9px 18px;
+        border-radius: 8px;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        font-weight: 600;
+    }
+
+    .preview-container {
+        border: 1px solid #e9ecef;
+        border-radius: 14px;
+        overflow: hidden;
+        background: #ffffff;
+    }
+
+    .preview-header {
+        padding: 12px 16px;
+        background: #f8f9fa;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .preview-image-wrapper {
+        min-height: 300px;
+        max-height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        background: #fafafa;
+    }
+
+    #preview {
+        max-width: 100%;
+        max-height: 360px;
+        object-fit: contain;
+        border-radius: 8px;
+    }
+
+    .dimension-input {
+        height: 48px;
+    }
+
+    .aspect-box {
+        padding: 16px;
+        border-radius: 10px;
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .upload-btn {
+        padding: 11px 25px;
+        font-weight: 600;
+        border-radius: 9px;
+    }
+
+    .back-btn {
+        padding: 11px 22px;
+        font-weight: 600;
+        border-radius: 9px;
+        border: 1px solid #dee2e6;
+    }
+
+    @@media (max-width: 576px) {
+        .upload-card .card-body {
+            padding: 22px !important;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+            .action-buttons .btn {
+                width: 100%;
+            }
+    }
+</style>
+
+
+<div class="upload-page py-5">
+
+    <div class="container">
+
+        <!-- Page Heading -->
+        <div class="text-center mb-4">
+
+            <span class="badge text-bg-primary px-3 py-2 mb-2">
+                IMAGE MANAGEMENT
+            </span>
+
+            <h2 class="fw-bold mb-2">
+                Resize Image Before Upload
+            </h2>
+
+            <p class="text-muted mb-0">
+                Optimize your image dimensions before saving it to the server.
+            </p>
+
+        </div>
+
+        <div class="row justify-content-center">
+
+            <div class="col-xl-9">
+
+                <div class="card upload-card border-0">
+
+                    <div class="card-body p-4 p-md-5">
+
+                        <form asp-action="Upload"
+                              method="post"
+                              enctype="multipart/form-data">
+
+                            @Html.AntiForgeryToken()
+
+                            <div asp-validation-summary="ModelOnly"
+                                 class="alert alert-danger mb-4">
+                            </div>
+
+
+                            <!-- Step 1 -->
+                            <div class="section-title mb-3">
+
+                                <div class="step-number">
+                                    1
+                                </div>
+
+                                <div>
+                                    <h5 class="mb-1">
+                                        Choose an Image
+                                    </h5>
+
+                                    <small class="text-muted">
+                                        Supported formats: JPG, JPEG, PNG, WEBP
+                                    </small>
+                                </div>
+
+                            </div>
+
+
+                            <!-- Upload Area -->
+                            <div class="upload-area mb-4">
+
+                                <input asp-for="ImageFile"
+                                       type="file"
+                                       accept="image/*"
+                                       id="imageFile"
+                                       class="d-none" />
+
+                                <label for="imageFile"
+                                       class="upload-label">
+
+                                    <div class="upload-icon">
+                                        ↑
+                                    </div>
+
+                                    <h5 class="mb-2">
+                                        Click to choose an image
+                                    </h5>
+
+                                    <p class="text-muted mb-0">
+                                        Select an image from your computer
+                                    </p>
+
+                                    <span class="browse-btn mt-3">
+                                        Browse Image
+                                    </span>
+
+                                </label>
+
+                            </div>
+
+                            <span asp-validation-for="ImageFile"
+                                  class="text-danger d-block mb-4">
+                            </span>
+
+
+                            <!-- Preview -->
+                            <div id="previewContainer"
+                                 class="preview-container mb-4"
+                                 style="display:none;">
+
+                                <div class="preview-header">
+
+                                    <h6 class="mb-0">
+                                        Image Preview
+                                    </h6>
+
+                                    <span id="fileName"
+                                          class="text-muted small">
+                                    </span>
+
+                                </div>
+
+                                <div class="preview-image-wrapper">
+
+                                    <img id="preview"
+                                         src=""
+                                         alt="Selected image preview" />
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Step 2 -->
+                            <div class="section-title mb-3">
+
+                                <div class="step-number">
+                                    2
+                                </div>
+
+                                <div>
+                                    <h5 class="mb-1">
+                                        Set Image Dimensions
+                                    </h5>
+
+                                    <small class="text-muted">
+                                        Enter the required width and height in pixels
+                                    </small>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row g-3 mb-3">
+
+                                <div class="col-md-6">
+
+                                    <label asp-for="Width"
+                                           class="form-label fw-semibold">
+                                        Width
+                                    </label>
+
+                                    <div class="input-group">
+
+                                        <input asp-for="Width"
+                                               type="number"
+                                               min="1"
+                                               max="5000"
+                                               class="form-control dimension-input"
+                                               value="800" />
+
+                                        <span class="input-group-text">
+                                            PX
+                                        </span>
+
+                                    </div>
+
+                                    <span asp-validation-for="Width"
+                                          class="text-danger">
+                                    </span>
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label asp-for="Height"
+                                           class="form-label fw-semibold">
+                                        Height
+                                    </label>
+
+                                    <div class="input-group">
+
+                                        <input asp-for="Height"
+                                               type="number"
+                                               min="1"
+                                               max="5000"
+                                               class="form-control dimension-input"
+                                               value="600" />
+
+                                        <span class="input-group-text">
+                                            PX
+                                        </span>
+
+                                    </div>
+
+                                    <span asp-validation-for="Height"
+                                          class="text-danger">
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Aspect Ratio -->
+                            <div class="aspect-box mb-4">
+
+                                <div class="form-check">
+
+                                    <input asp-for="MaintainAspectRatio"
+                                           class="form-check-input"
+                                           id="maintainAspectRatio" />
+
+                                    <label class="form-check-label"
+                                           for="maintainAspectRatio">
+
+                                        <span class="fw-semibold d-block">
+                                            Maintain Aspect Ratio
+                                        </span>
+
+                                        <small class="text-muted">
+                                            Prevent the image from stretching or becoming distorted.
+                                        </small>
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Buttons -->
+                            <div class="action-buttons pt-2">
+
+                                <button type="submit"
+                                        class="btn btn-primary upload-btn">
+
+                                    <span>
+                                        Resize & Upload
+                                    </span>
+
+                                    <span class="ms-2">
+                                        →
+                                    </span>
+
+                                </button>
+
+                                <a asp-action="Index"
+                                   class="btn btn-light back-btn">
+
+                                    ← Back to Images
+
+                                </a>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        const imageFile =
+            document.getElementById("imageFile");
+
+        const preview =
+            document.getElementById("preview");
+
+        const previewContainer =
+            document.getElementById("previewContainer");
+
+        const fileName =
+            document.getElementById("fileName");
+
+
+        imageFile.addEventListener("change", function () {
+
+            const file = this.files[0];
+
+            if (!file) {
+
+                preview.src = "";
+
+                previewContainer.style.display =
+                    "none";
+
+                return;
+            }
+
+
+            fileName.textContent =
+                file.name;
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function (e) {
+
+                    preview.src =
+                        e.target.result;
+
+                    previewContainer.style.display =
+                        "block";
+                };
+
+
+            reader.readAsDataURL(file);
+
+        });
+
+    </script>
+}
