@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DotNet_Image_Resize_Before_Upload")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+39afc1ac2f4237fac868806bbfff73e900f6824d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0896fc88f81af629d111f23269d021ed6724f50")]
 [assembly: System.Reflection.AssemblyProductAttribute("DotNet_Image_Resize_Before_Upload")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DotNet_Image_Resize_Before_Upload")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
